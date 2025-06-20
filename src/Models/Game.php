@@ -8,9 +8,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Game extends Model
 {
     public $incrementing = false;
-    protected $casts = [];
+    
     use SoftDeletes;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'id',
+    ];
+
+    protected $casts = [
+        'created_at' => 'datetime',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }
