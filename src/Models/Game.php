@@ -8,15 +8,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Game extends Model
 {
-    use SoftDeletes;
-    use HasFactory;
-
-    protected $fillable = [];
-
-
-    public function game_type()
-    {
-        return $this->belongsTo(GameType::class);
-    }
     
+    use SoftDeletes;
+
+    protected $fillable = [
+        'id',
+    ];
+
+    public $incrementing = false;
+    
+    protected $casts = [
+        'created_at' => 'datetime',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
