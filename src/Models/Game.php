@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
 {
-    //
+    public $incrementing = false;
+    protected $casts = [];
 }
